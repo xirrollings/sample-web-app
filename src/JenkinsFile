@@ -5,7 +5,9 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                // Replace this URL with your actual Git repository URL
+                git branch: 'main',
+                    url: 'https://github.com/xirrollings/https://github.com/xirrollings/sample-web-app.git'
             }
         }
 
@@ -30,7 +32,7 @@ pipeline {
         stage('Archive Artifact') {
             steps {
                 archiveArtifacts artifacts: 'target/*.jar',
-                                 fingerprint: true
+                    fingerprint: true
             }
         }
     }
@@ -41,7 +43,7 @@ pipeline {
         }
 
         failure {
-            echo 'Pipeline failed. Check the Console Output for details.'
+            echo 'Pipeline failed. Check Console Output.'
         }
     }
 }
